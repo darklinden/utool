@@ -22,17 +22,28 @@ bool UTF16ToUTF8(const std::u16string& utf16, std::string& outUtf8)
 }
 
 //将unicode转义字符序列转换为内存中的unicode字符串
-std::string utf8_decode_utf16(const std::string &utf16_encoded)
+std::string utf8_decode_utf16(const std::string &utf16_encoded, const std::vector<std::string> &ustarts)
 {
+    auto hasPrefixUStart = [=](const std::string &str) -> int {
+        for (size_t i = 0; i < ustarts.size(); i++) {
+            auto s = ustarts[i];
+            if (str.length() > s.length()
+                && str.substr(0, s.length()) == s) {
+                return (int)s.length();
+            }
+        }
+        return -1;
+    };
+    
     std::string ret = "";
+    
     for (int char_index = 0; char_index < utf16_encoded.length(); char_index++) {
-        auto ca = utf16_encoded.at(char_index);
-        if (ca == '\\'
-            && char_index + 1 < utf16_encoded.length()
-            && (utf16_encoded.at(char_index + 1) == 'u' || utf16_encoded.at(char_index + 1) == 'U')
-            && utf16_encoded.length() > char_index + 5) {
+        
+        auto ca = utf16_encoded.substr(char_index);
+        auto p = hasPrefixUStart(ca);
+        if (p != -1 && utf16_encoded.length() >= char_index + p + 4) {
             
-            std::string hex = utf16_encoded.substr(char_index + 2, 4);
+            std::string hex = utf16_encoded.substr(char_index + p, 4);
             
             unsigned short x;
             std::stringstream ss;
@@ -45,10 +56,10 @@ std::string utf8_decode_utf16(const std::string &utf16_encoded)
             UTF16ToUTF8(utf16, outUtf8);
             ret.append(outUtf8);
             
-            char_index += 5;
+            char_index += p + 4 - 1;
         }
         else {
-            ret.push_back(ca);
+            ret += utf16_encoded.substr(char_index, 1);
         }
     }
     
@@ -58,10 +69,16 @@ std::string utf8_decode_utf16(const std::string &utf16_encoded)
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    if (argc) {
+    if (argc > 1) {
         printf("decoded:\n");
-        for (int i = 0; i < argc; i++) {
-            printf("%s", utf8_decode_utf16(argv[i]).c_str());
+        std::vector<std::string> vec;
+        vec.push_back("u");
+        vec.push_back("U");
+        vec.push_back("\\U");
+        vec.push_back("\\u");
+        
+        for (int i = 1; i < argc; i++) {
+            printf("%s ", utf8_decode_utf16(argv[i], vec).c_str());
         }
         printf("\n");
     }
