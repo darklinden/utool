@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C3A6A8B1CFC2B8900ADF698 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A6A8A1CFC2B8900ADF698 /* main.cpp */; };
+		1C3A6A8B1CFC2B8900ADF698 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A6A8A1CFC2B8900ADF698 /* main.mm */; };
 		1C3A6A971CFC2CBD00ADF698 /* ConvertUTF.c in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A6A941CFC2CBD00ADF698 /* ConvertUTF.c */; };
 		1C3A6A981CFC2CBD00ADF698 /* ConvertUTFWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A6A961CFC2CBD00ADF698 /* ConvertUTFWrapper.cpp */; };
 /* End PBXBuildFile section */
@@ -26,7 +26,7 @@
 
 /* Begin PBXFileReference section */
 		1C3A6A871CFC2B8900ADF698 /* utool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = utool; sourceTree = BUILT_PRODUCTS_DIR; };
-		1C3A6A8A1CFC2B8900ADF698 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		1C3A6A8A1CFC2B8900ADF698 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		1C3A6A941CFC2CBD00ADF698 /* ConvertUTF.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ConvertUTF.c; sourceTree = "<group>"; };
 		1C3A6A951CFC2CBD00ADF698 /* ConvertUTF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvertUTF.h; sourceTree = "<group>"; };
 		1C3A6A961CFC2CBD00ADF698 /* ConvertUTFWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConvertUTFWrapper.cpp; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				1C3A6A931CFC2CBD00ADF698 /* ConvertUTF */,
-				1C3A6A8A1CFC2B8900ADF698 /* main.cpp */,
+				1C3A6A8A1CFC2B8900ADF698 /* main.mm */,
 			);
 			path = utool;
 			sourceTree = "<group>";
@@ -152,7 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C3A6A8B1CFC2B8900ADF698 /* main.cpp in Sources */,
+				1C3A6A8B1CFC2B8900ADF698 /* main.mm in Sources */,
 				1C3A6A981CFC2CBD00ADF698 /* ConvertUTFWrapper.cpp in Sources */,
 				1C3A6A971CFC2CBD00ADF698 /* ConvertUTF.c in Sources */,
 			);
@@ -275,6 +275,7 @@
 				1C3A6A901CFC2B8900ADF698 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
