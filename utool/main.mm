@@ -208,7 +208,7 @@ int main(int argc, const char * argv[]) {
         }
     }
     else {
-        printf("using:\n\tutool [strings] to decode\n");
+        printf("using:\n\tutool [d: decode / e: encode] [strings] to decode\n");
     }
     return 0;
 }
